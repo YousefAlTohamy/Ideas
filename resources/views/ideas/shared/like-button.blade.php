@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center mb-2">
 
     {{-- New: Add a wrapper div with a unique ID for each idea's like section --}}
     <div id="idea-like-{{ $idea->id }}" class="d-flex align-items-center">
