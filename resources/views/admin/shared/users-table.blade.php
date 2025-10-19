@@ -22,12 +22,15 @@
                 <td>
                     <div class="d-flex justify-content-center gap-2">
                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-outline-primary">View</a>
-                        <form id="deleteUserForm" action="{{ route('admin.users.destroy', $user->id) }}" method="post">
-                            @method('delete')
-                            @csrf
-                            <button type="button" class="btn btn-sm btn-outline-danger"
-                                onclick="confirmDeleteUser()">Delete</button>
-                        </form>
+                        @if (auth()->user()->id !== $user->id)
+                            <form id="deleteUserForm" action="{{ route('admin.users.destroy', $user->id) }}"
+                                method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    onclick="confirmDeleteUser()">Delete</button>
+                            </form>
+                        @endif
                         @if (auth()->user()->id !== $user->id)
                             <form action="{{ route('admin.users.toggleAdmin', $user->id) }}" method="post">
                                 @csrf
